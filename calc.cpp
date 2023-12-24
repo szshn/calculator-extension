@@ -70,11 +70,15 @@ double Calculator::computeNew(string expression)
 					output = numbers.top() / output;
 
 				numbers.pop();
+				numbers.push(output);
 			}
 
 			postfix.erase(postfix.begin());
 
 		}
+
+		if (!numbers.empty())
+			output = numbers.top();
 	}
 
 	_history.insert(pair<string, double>(infix, output));
