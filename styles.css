@@ -1,0 +1,84 @@
+body {
+  background-color: #cbccd0;
+  font-family: "Jura", "HP Simplified", sans-serif;
+  width: 280px;
+  border: 0px solid slateblue;
+  padding: 0px 0px;
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin: 5px 0px;
+}
+
+.output {
+  font: 24px "Jura", "HP Simplified", sans-serif;
+  border: 0px solid salmon;
+  padding: 0px 5px;
+  margin: 0px;
+}
+
+button {
+  display: flex;
+  width: 60px;
+  height: 36px;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-items: center;
+  font: 22px "Jura", "HP Simplified", sans-serif;
+  border-radius: 10px;
+  background-color: #fbfbfb;
+  border: 2px solid #616161;
+  cursor: pointer;
+  filter: drop-shadow(3px 3px #6a6a6a);
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  text-align: end;
+  width: 260px;
+  height: 95px;
+  background-color: #fbfbfb;
+  border: 2px solid #5c5387;
+  border-radius: 10px;
+  margin: 5px auto;
+}
+
+.btn {
+  width: 260px;
+  height: auto;
+  margin: 15px auto;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.purple {
+  border-color: #5c5387;
+  filter: drop-shadow(3px 3px #797397);
+}
+
+.orange {
+  border-color: #d38248;
+  filter: drop-shadow(3px 3px #de9562);
+}
+
+input#text {
+  text-align: end;
+  border: 0px;
+  background-color: #fbfbfb;
+  font: 40px "Jura", "HP Simplified", sans-serif;
+  margin: 0px 5px 5px 5px;
+}
+
+input::placeholder {
+  font: 40px "Jura", "HP Simplified", sans-serif;
+  color: #000;
+}
