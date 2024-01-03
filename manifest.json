@@ -1,0 +1,13 @@
+{
+  "name": "Calculator",
+  "version": "0.0.0.1",
+  "manifest_version": 3,
+  "description": "An browser extension giving quick access to the calculator.",
+  "icons": {
+    "64": "icons/calc64x64.png",
+    "128": "icons/calc128x128.png"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
