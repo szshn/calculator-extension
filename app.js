@@ -1,6 +1,6 @@
-// declaring variables
-const line1 = document.querySelector("output");
-const line2 = document.getElementById("text");
+// declaring variables <- should this be under the class as an element?
+const line1 = document.getElementById("line1"); // also acts as history
+const line2 = document.getElementById("line2");
 const no1 = document.getElementById("no1");
 const no2 = document.getElementById("no2");
 const no3 = document.getElementById("no3");
@@ -23,18 +23,23 @@ const lpar = document.getElementById("lpar");
 const rpar = document.getElementById("rpar");
 const pi = document.getElementById("pi");
 const log = document.getElementById("log");
+const ans = document.getElementById("ans");
+const eq = document.getElementById("eq");
 
 const parCount = {
   left: 0,
   right: 0,
 };
+
 function addInput(a) {
   line2.value += String(a);
 }
 /* TODO
  * Move the individual condition to addInput
- * Add keyboard event listeners
- * Add ans and = buttons
+ * - corner cases exist, on this later.
+ * - class method
+ * Parse and compute result
+ * line1 and line2 control between seeing first result and starting second input
  */
 
 // event listeners for buttons
@@ -133,4 +138,16 @@ ac.addEventListener("click", () => {
   line2.value = "";
   parCount.left = 0;
   parCount.right = 0;
+});
+ans.addEventListener("click", () => {
+  if (line1.innerText !== "") {
+    addInput("Ans");
+  }
+});
+eq.addEventListener("click", () => {
+  if (line2.value !== "") {
+    const result = 0; // temporary
+    line1.innerText = line2.value;
+    line2.value = result;
+  }
 });
