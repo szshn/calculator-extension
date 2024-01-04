@@ -1,6 +1,14 @@
-// declaring variables <- should this be under the class as an element?
+import { toPostfix, evaluate } from "./calc";
+
+/* TODO
+ * Apply corner cases
+ * Parse and compute result
+ * line1 and line2 control between seeing first result and starting second input
+ */
+
 const line1 = document.getElementById("line1"); // also acts as history
 const line2 = document.getElementById("line2");
+const no0 = document.getElementById("no0");
 const no1 = document.getElementById("no1");
 const no2 = document.getElementById("no2");
 const no3 = document.getElementById("no3");
@@ -10,7 +18,6 @@ const no6 = document.getElementById("no6");
 const no7 = document.getElementById("no7");
 const no8 = document.getElementById("no8");
 const no9 = document.getElementById("no9");
-const no0 = document.getElementById("no0");
 const dp = document.getElementById("dp");
 const plus = document.getElementById("plus");
 const minus = document.getElementById("minus");
@@ -31,18 +38,11 @@ const parCount = {
   right: 0,
 };
 
-function addInput(a) {
-  line2.value += String(a);
-}
-/* TODO
- * Move the individual condition to addInput
- * - corner cases exist, on this later.
- * - class method
- * Parse and compute result
- * line1 and line2 control between seeing first result and starting second input
- */
+const addInput = (a) => (line2.value += String(a));
 
-// event listeners for buttons
+no0.addEventListener("click", () => {
+  addInput(0);
+});
 no1.addEventListener("click", () => {
   addInput(1);
 });
@@ -69,9 +69,6 @@ no8.addEventListener("click", () => {
 });
 no9.addEventListener("click", () => {
   addInput(9);
-});
-no0.addEventListener("click", () => {
-  addInput(0);
 });
 dp.addEventListener("click", () => {
   if (line2.value.at(-1) !== ".") {
