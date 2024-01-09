@@ -1,4 +1,4 @@
-import { toPostfix, evaluate } from "./calc";
+// import { toPostfix, evaluate } from "./calc";
 
 /* TODO
  * Apply corner cases
@@ -38,7 +38,10 @@ const parCount = {
   right: 0,
 };
 
-const addInput = (a) => (line2.value += String(a));
+const addInput = (a) => {
+  line2.value += String(a);
+  line2.focus();
+};
 
 no0.addEventListener("click", () => {
   addInput(0);
@@ -121,6 +124,7 @@ del.addEventListener("click", () => {
   if (line2.value.length >= 4 && line2.value.at(-2) === "g") {
     line2.value = line2.value.slice(0, -4);
     parCount.left -= 1;
+    line2.focus();
     return;
   }
 
@@ -130,11 +134,13 @@ del.addEventListener("click", () => {
     parCount.right -= 1;
   }
   line2.value = line2.value.slice(0, -1);
+  line2.focus();
 });
 ac.addEventListener("click", () => {
   line2.value = "";
   parCount.left = 0;
   parCount.right = 0;
+  line2.focus();
 });
 ans.addEventListener("click", () => {
   if (line1.innerText !== "") {
@@ -146,5 +152,57 @@ eq.addEventListener("click", () => {
     const result = 0; // temporary
     line1.innerText = line2.value;
     line2.value = result;
+    line2.focus();
+  }
+});
+
+line2.addEventListener("keydown", (event) => {
+  const character = event.key;
+  console.log(character);
+  const allowed = [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    ".",
+    "+",
+    "-",
+    "*",
+    "/",
+    "^",
+  ];
+
+  if (allowed.includes(character)) {
+    addInput(character);
+  } else if (character === "p") {
+    addInput("π");
+  } else if (character === "Backspace") {
+    if (line2.value.length >= 4 && line2.value.at(-2) === "g") {
+      line2.value = line2.value.slice(0, -4);
+      parCount.left -= 1;
+      line2.focus();
+      return;
+    }
+
+    if (line2.value.at(-1) === "(") {
+      parCount.left -= 1;
+    } else if (line2.value.at(-1) === ")") {
+      parCount.right -= 1;
+    }
+    line2.value = line2.value.slice(0, -1);
+    line2.focus();
+  } else if (character === "Enter") {
+    if (line2.value !== "") {
+      const result = 0; // temporary
+      line1.innerText = line2.value;
+      line2.value = result;
+      line2.focus();
+    }
   }
 });

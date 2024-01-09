@@ -82,3 +82,7 @@ input::placeholder {
   font: 40px "Jura", "HP Simplified", sans-serif;
   color: #000;
 }
+
+input:focus {
+  outline: none;
+}
