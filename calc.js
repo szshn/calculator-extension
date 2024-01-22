@@ -1,10 +1,9 @@
-import stack from "./stack";
-
-export const toPostfix = (equation) => {
+// import stack from "./stack";
+const toPostfix = (equation) => {
   return "";
 };
 
 export const evaluate = (equation) => {
   const postfix = toPostfix(equation);
-  return postfix;
+  return 23;
 };

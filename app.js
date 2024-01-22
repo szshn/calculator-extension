@@ -1,4 +1,4 @@
-// import { toPostfix, evaluate } from "./calc";
+import { evaluate } from "./calc.js";
 
 /* TODO
  * Apply corner cases
@@ -38,9 +38,31 @@ const parCount = {
   right: 0,
 };
 
+let typing = true;
+
 const addInput = (a) => {
+  if (!typing) {
+    line1.innerText = line2.value;
+    typing = true;
+    const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
+    const op = ["+", "-", "*", "/", "^"];
+
+    if (digits.includes(a)) {
+      line2.value = "";
+    }
+  }
   line2.value += String(a);
   line2.focus();
+};
+
+const getResult = () => {
+  if (line2.value !== "") {
+    const result = evaluate(line2.value); // temporary
+    line1.innerText = line2.value;
+    line2.value = result;
+    line2.focus();
+  }
+  typing = false;
 };
 
 no0.addEventListener("click", () => {
@@ -148,12 +170,7 @@ ans.addEventListener("click", () => {
   }
 });
 eq.addEventListener("click", () => {
-  if (line2.value !== "") {
-    const result = 0; // temporary
-    line1.innerText = line2.value;
-    line2.value = result;
-    line2.focus();
-  }
+  getResult();
 });
 
 line2.addEventListener("keydown", (event) => {
@@ -198,11 +215,6 @@ line2.addEventListener("keydown", (event) => {
     line2.value = line2.value.slice(0, -1);
     line2.focus();
   } else if (character === "Enter") {
-    if (line2.value !== "") {
-      const result = 0; // temporary
-      line1.innerText = line2.value;
-      line2.value = result;
-      line2.focus();
-    }
+    getResult();
   }
 });
