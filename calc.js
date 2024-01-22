@@ -4,6 +4,15 @@ const op1 = ["+", "-"];
 const op2 = ["×", "÷", "^"];
 const allowed = digits.concat(op1, op2);
 
+/* TODO
+ * 1. toPostfix
+ * Add decimal
+ * Working high-precedence operations
+ * Working parenthesis
+ * Add log() function
+ *
+ * 2. evaluate
+ */
 const toPostfix = (equation) => {
   let output = [];
   let op_stack = [];
