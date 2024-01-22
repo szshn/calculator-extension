@@ -45,7 +45,6 @@ const addInput = (a) => {
     line1.innerText = line2.value;
     typing = true;
     const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
-    const op = ["+", "-", "*", "/", "^"];
 
     if (digits.includes(a)) {
       line2.value = "";
@@ -175,7 +174,6 @@ eq.addEventListener("click", () => {
 
 line2.addEventListener("keydown", (event) => {
   const character = event.key;
-  console.log(character);
   const allowed = [
     "0",
     "1",
@@ -190,13 +188,15 @@ line2.addEventListener("keydown", (event) => {
     ".",
     "+",
     "-",
-    "*",
-    "/",
     "^",
   ];
 
   if (allowed.includes(character)) {
     addInput(character);
+  } else if (character === "*") {
+    addInput("×");
+  } else if (character === "/") {
+    addInput("÷");
   } else if (character === "p") {
     addInput("π");
   } else if (character === "Backspace") {
