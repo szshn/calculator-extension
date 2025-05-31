@@ -2,8 +2,6 @@
 
 A calculator project, but in the browser extension form!
 
-🚧 This project is currently in progress. Welcome any PRs to collaborate!
-
 ## References
 
 [Shunting yard algorithm](https://en.wikipedia.org/wiki/Shunting_yard_algorithm#:~:text=In%20computer%20science%2C%20the%20shunting,abstract%20syntax%20tree%20(AST))
